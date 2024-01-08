@@ -1,6 +1,16 @@
 {% extends "layout.html" %}
 {% block content %}
 
-<h1>Hello everyone!</h1>
+{% if username %}
+  <h1>Hello, {{ username }}!</h1>
+{% else %}
+  <h1>Hello, whoever!</h1>
+{% endif %}
+
+{% if questions %}
+  {% for question in questions %}
+    <h3> {{ question }} </h3> 
+  {% endfor %}
+{% endif %}
 
 {% endblock content %}
