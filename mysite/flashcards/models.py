@@ -10,10 +10,10 @@ LANGUAGE_CHOICE = {
 
 class Question(models.Model):
     question_text = models.CharField(max_length=200)
+    votes = models.IntegerField(default=0)
     pub_date = models.DateTimeField(default=timezone.now)
     author = models.CharField(max_length=30, blank=True, null=True)
     language = models.CharField(max_length=3, choices=LANGUAGE_CHOICE, null=True, blank=True)
-    votes = models.IntegerField(default=0)
 
 
     def __str__(self):
