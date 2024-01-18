@@ -1,0 +1,19 @@
+{% extends "layout.html" %}
+{% block content %}
+
+{% if username %}
+  <h1>Hello, {{ username }}!</h1>
+{% else %}
+  <h1>Hello, whoever!</h1>
+{% endif %}
+
+<table>
+  <th>The table</th>
+{% if questions %}
+  {% for id, question in questions %}
+  <tr><td><a href={% url 'flashcards:flashcards' id %}>{{ id }}) {{ question }}</a></td></tr>
+  {% endfor %}
+{% endif %}
+</table>
+
+{% endblock content %}
