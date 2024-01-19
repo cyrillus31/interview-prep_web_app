@@ -1,19 +1,23 @@
 {% extends "./layout.html" %}
+
 {% block content %}
+
 <p>
-  <div>Here will be a LOGIN form</div>
+  <div>
+    <h2>Login page</h2>
+  </div>
 </p>
 
-<form action="" method=POST>
+<form action="" method="post">
   {% csrf_token %}
 
-  <div>
+  <div> 
     <label for="InputEmail">Email address</label><br>
-    <input type="email" id="InputEmail"><br>
+    <input type="email" id="InputEmail" name="email" placeholder="name@example.com" required><br>
   </div>
   <div>
     <label for="InputPassowrd">Password</label><br>
-    <input type="password" id="InputPassowrd"><br><br>
+    <input type="password" id="InputPassword" name="password" placeholder="password" required><br><br>
   </div>
   <div>
     <input type="submit" value="Submit">
