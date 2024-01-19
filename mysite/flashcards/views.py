@@ -9,7 +9,7 @@ def index(request):
             "username": "Cyrillus",
             "questions": [(q.id, q.question_text) for q in models.Question.objects.all()]
             }
-    return render(request, "index.html", context)
+    return render(request, "flashcards/index.html", context)
 
 
 def flashcards(request, question_id: int):
@@ -17,6 +17,6 @@ def flashcards(request, question_id: int):
     context = {
             "question": question.question_text,
             }
-    return render(request, "flashcard.html", context)
+    return render(request, "flashcards/flashcard.html", context)
 
 
