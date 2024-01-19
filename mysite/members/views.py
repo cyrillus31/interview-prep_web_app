@@ -1,4 +1,4 @@
-from django.shortcuts import HttpResponse, render, redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login, logout
 from django.contrib import messages
 from django.http import HttpRequest
@@ -26,3 +26,7 @@ def login_user(request: HttpRequest):
 
     return render(request, "authenticate/login_user.html", {})
 
+
+def logout_user(request: HttpRequest):
+    logout(request)
+    return redirect(to="flashcards:index")
