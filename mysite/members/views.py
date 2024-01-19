@@ -9,19 +9,20 @@ def login_user(request: HttpRequest):
         print("hello")
         
         try:
-            email = request.POST["email"]
+            username = request.POST["username"]
             password = request.POST["password"]
-            user = authenticate(request, email=email, password=password)
+            user = authenticate(request, username=username, password=password)
 
             if user is not None:
                 login(request, user)
-                return redirect(request, HttpResponse("Successfull login!"), {})
+                return redirect(to="flashcards:index")
 
             messages.success(request, "Ivalid login data")
             return render(request, "authenticate/login_user.html", {})
 
         except Exception as e:
-            return render(request, "authenticate/login_user.html", {"error": e})
+            messages.success(request, f"{e}")
+            return render(request, "authenticate/login_user.html", {})
 
     return render(request, "authenticate/login_user.html", {})
 
