@@ -1,0 +1,32 @@
+{% extends "base/layout.html" %}
+
+{% block content %}
+
+<p>
+  <div>
+    <h2>Registration page</h2>
+  </div>
+</p>
+
+{{ form.non_field_errors }}
+<form action="" method="post">
+  {% csrf_token %}
+
+  {% for field in form %}
+  <div class="form-group"> 
+    {% if field.help_text %}
+    <label for="{{ field.id_for_label }}" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-custom-class="custom-tooltip" data-bs-title="{{ field.help_text }}">{{ field.label }}*</label><br>
+    {% else %}
+    <label for="{{ field.id_for_label }}">{{ field.label }}</label><br>
+    {% endif %}
+    {{ field }}
+  </div>
+  {% endfor %}
+
+  <div>
+    <input type="submit" value="Submit">
+  </div>
+
+</form>
+
+{% endblock content %}
